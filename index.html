@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rigel Foundation CTF</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav><div class="w"><div class="logo"><b>&#9733;</b> RIGEL FOUNDATION</div><div><a href="#home" data-v="home">Home</a><a href="#score" data-v="score">Scoreboard</a><a href="#race" data-v="race">Let’s Race</a></div></div></nav>
+
+<main id="v-home" class="w" style="padding-top:48px;padding-bottom:40px">
+<div class="hero"><div class="stage" aria-hidden="true"><img src="cars/ferrari.png" alt="" class="on"><img src="cars/porsche.png" alt="" class=""><img src="cars/aston.png" alt="" class=""><img src="cars/bmw.png" alt="" class=""><img src="cars/toyota.png" alt="" class=""><img src="cars/cadillac.png" alt="" class=""><img src="cars/alpine.png" alt="" class=""></div>
+<div class="k">World Endurance Championship · CTF made by Om</div>
+<h1 style="font-size:clamp(48px,11vw,88px);margin:14px 0 18px">Solve the cars.<br>Find the key.</h1>
+<p class="m" style="max-width:600px">The FIA WEC pits hypercars against each other in endurance races. Here, each car hides a puzzle. You don’t need any cyber security knowledge.</p>
+<a class="btn" href="#login" id="go">Let’s go</a></div>
+<div class="g3" style="margin-top:36px">
+<div class="card"><h3 style="font-size:26px">7 cars to beat</h3><p class="m" style="margin:8px 0 0">Easiest to hardest. Solve a car to earn points and your own unique flag.</p></div>
+<div class="card"><h3 style="font-size:26px">Try the example car first</h3><p class="m" style="margin:8px 0 0">The Peugeot 9X8 is a practice lap with a worked solution. No points.</p></div>
+<div class="card"><h3 style="font-size:26px">How it works</h3><p class="m" style="margin:8px 0 0">Read the clue, spot the trick (CyberChef decodes most of them), submit the key.</p></div></div>
+<section id="login" style="border-top:1px solid var(--bd);margin-top:44px;padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;align-items:start">
+<div><div class="k">Login</div><h2 style="font-size:56px;margin:12px 0">Get on the grid</h2><p class="m">Your name is displayed on the scoreboard. Your roll number makes your flags unique.</p></div>
+<div class="card"><label for="nm">Name</label><input id="nm" autocomplete="off"><label for="rl">Roll number</label><input id="rl" autocomplete="off">
+<button class="btn" id="start" style="width:100%">Start racing</button><p id="lmsg" class="m" style="margin:12px 0 0" role="status"></p></div></section>
+<p class="m" style="font-size:15px;margin-top:32px">About: Om made it, and yes, loves cars.</p>
+</main>
+
+<main id="v-score" class="w" hidden style="padding-top:44px;padding-bottom:40px">
+<div class="k">Leaderboard</div><h1 style="font-size:64px;margin:10px 0 24px">Scoreboard</h1>
+<p id="smode" class="m" style="margin-top:0"></p>
+<div class="g3" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+<div class="card"><h3 style="font-size:24px;margin-bottom:18px">Your score vs others</h3><div id="chart" class="chart"></div><div id="clab" class="lab"></div></div>
+<div class="card"><h3 style="font-size:24px;margin-bottom:8px">Text ranking</h3><div id="rank"></div></div></div>
+</main>
+
+<main id="v-race" class="w" hidden style="padding-top:44px;padding-bottom:40px">
+<div class="k">Hover or tap a car to open its task</div><h1 style="font-size:64px;margin:10px 0 24px">Let’s race</h1>
+<p id="rmsg" class="m" role="status"></p>
+<div id="cars">
+<div class="car" data-id="ex"><button><span class="d">Example · Peugeot 9X8</span><span class="m st">No points</span></button><div class="body">
+<p>The team radio is scrambled. Decode it to get the key: <code>Q2hlY2tlcmVkIGZsYWc=</code></p>
+<p class="m"><b>How to solve it:</b> 1) Text ending in <code>=</code> made of random letters is usually Base64. 2) Open CyberChef, pick “From Base64”. 3) Read the output and type it below. Every other car works the same way: read, spot the trick, decode, submit.</p><div class="row"><input aria-label="Key" placeholder="Enter the key"><button class="btn sub">Submit</button></div><p class="res" role="status"></p></div></div>
+<div class="car" data-id="1"><button><span class="d">1 · Alpine A424</span><img class="th" src="cars/alpine.png" alt=""><span class="m st">100 pts</span></button><div class="body"><img class="big" src="cars/alpine.png" alt="Alpine A424">
+<p>The A424 has two of these bolted to its V6. Unscramble: <code>B O T U R</code></p><div class="row"><input aria-label="Key" placeholder="Enter the key"><button class="btn sub">Submit</button></div><p class="res" role="status"></p></div></div>
+<div class="car" data-id="2"><button><span class="d">2 · Cadillac V-Series.R</span><img class="th" src="cars/cadillac.png" alt=""><span class="m st">200 pts</span></button><div class="body"><img class="big" src="cars/cadillac.png" alt="Cadillac V-Series.R">
+<p>Friendly, with a wide window (several answers work). Its 5.5 litre V8 has no turbos. What kind of engine is that? (one word is enough)</p><div class="row"><input aria-label="Key" placeholder="Enter the key"><button class="btn sub">Submit</button></div><p class="res" role="status"></p></div></div>
+<div class="car" data-id="3"><button><span class="d">3 · Toyota TR010 Hybrid</span><img class="th" src="cars/toyota.png" alt=""><span class="m st">300 pts</span></button><div class="body"><img class="big" src="cars/toyota.png" alt="Toyota TR010 Hybrid">
+<!-- Hidden clue: the extra weight Toyota carries from BoP is called BALLAST. The key is that word. -->
+<p>The Toyota is stable but carries heavy weight, so this page is heavier than it looks. Something is hidden in the page itself. Right-click, choose Inspect, and look through the code for a comment.</p><div class="row"><input aria-label="Key" placeholder="Enter the key"><button class="btn sub">Submit</button></div><p class="res" role="status"></p></div></div>
+<div class="car" data-id="4"><button><span class="d">4 · BMW M Hybrid V8</span><img class="th" src="cars/bmw.png" alt=""><span class="m st">400 pts</span></button><div class="body"><img class="big" src="cars/bmw.png" alt="BMW M Hybrid V8">
+<p>Fast start, harder finish. Part 1 (Base64): <code>Q2Flc2FyIHNoaWZ0IDQ6IFRFR0k=</code></p><p>Part 2: follow what part 1 tells you. The key is the final word.</p><div class="row"><input aria-label="Key" placeholder="Enter the key"><button class="btn sub">Submit</button></div><p class="res" role="status"></p></div></div>
+<div class="car" data-id="5"><button><span class="d">5 · Porsche 963</span><img class="th" src="cars/porsche.png" alt=""><span class="m st">500 pts</span></button><div class="body"><img class="big" src="cars/porsche.png" alt="Porsche 963">
+<p>Snappy and unforgiving: one wrong character fails, and capitals count. ROT13 message: <code>Cerpvfvba</code></p><div class="row"><input aria-label="Key" placeholder="Enter the key (exact)"><button class="btn sub">Submit</button></div><p class="res" role="status"></p></div></div>
+<div class="car" data-id="6"><button><span class="d">6 · Aston Martin Valkyrie</span><img class="th" src="cars/aston.png" alt=""><span class="m st">600 pts</span></button><div class="body"><img class="big" src="cars/aston.png" alt="Aston Martin Valkyrie">
+<p>Heavy, temperamental, narrow window. Two layers. Decode this hex, then do the maths: <code>446976696465203635303020627920313220616e6420726f756e6420746f20612077686f6c65206e756d6265722e</code></p><div class="row"><input aria-label="Key" placeholder="Enter the key"><button class="btn sub">Submit</button></div><p class="res" role="status"></p></div></div>
+<div class="car" data-id="7"><button><span class="d">7 · Ferrari 499P</span><img class="th" src="cars/ferrari.png" alt=""><span class="m st">700 pts</span></button><div class="body"><img class="big" src="cars/ferrari.png" alt="Ferrari 499P">
+<p>Final boss. Three Le Mans wins: 2023, 2024, 2025. Take the first letter of your key for level 1 (2023), level 3 (2024) and level 5 (2025), then add the key from level 6. Write it all together in lowercase, with no spaces.</p><div class="row"><input aria-label="Key" placeholder="Enter the key"><button class="btn sub">Submit</button></div><p class="res" role="status"></p></div></div>
+</div></main>
+
+<script src="script.js"></script>
+</body>
+</html>
